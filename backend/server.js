@@ -36,18 +36,19 @@ app.use("/api/upload", uploadRoutes);
 app.get("/api/config/paypal", (req, res) =>
   res.send(process.env.PAYPAL_CLIENT_ID)
 );
- app.use(express.static(path.join(__dirname, 'build')));
-
--app.get('/', function (req, res) {
-+app.get('/*', function (req, res) {
-   res.sendFile(path.join(__dirname, 'build', 'index.html'));
- });
 
 const dirname = path.resolve();
 app.use("/uploads", express.static(path.join(dirname, "/uploads")));
 
 app.use(notFound);
 app.use(errorHandler);
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(__dirname + "/dist/"));
+  app.get("*", (_req, res) => {
+    res.sendFile(__dirname + "/dist/index.html");
+  });
+}
 
 const PORT = process.env.PORT || 5000;
 
