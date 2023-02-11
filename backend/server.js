@@ -45,4 +45,4 @@ app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, console.log("Server running on port 5000"));s
+app.listen(PORT, console.log("Server running on port 5000"));
