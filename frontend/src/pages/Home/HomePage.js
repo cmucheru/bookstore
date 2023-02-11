@@ -25,7 +25,7 @@ const HomePage = () => {
     <div className="home">
       <div className="title">
         <h2>All Books</h2>
-        <p>Mua sách truyện tiếng Anh, sách ngoại văn.</p>
+        <p>Find your favourite books ...</p>
       </div>
       {loading ? (
         <Loader />
