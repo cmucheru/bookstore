@@ -7,7 +7,7 @@ import {
 } from "../constants/cartConstants";
 
 export const addToCart = (id, qty) => async (dispatch, getState) => {
-  const { data } = await axios.get(`/api/books/${id}`);
+  const { data } = await axios.get(`https://bookies-1.onrender.com/api/books/${id}`);
 
   dispatch({
     type: CART_ADD_ITEM,
