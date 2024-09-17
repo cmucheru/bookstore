@@ -30,7 +30,7 @@ export const listBooks =
       dispatch({ type: BOOK_LIST_REQUEST });
 
       const { data } = await axios.get(
-        `/api/books?keyword=${keyword}&pageNumber=${pageNumber}`
+        `https://bookies-1.onrender.com/api/books?keyword=${keyword}&pageNumber=${pageNumber}`
       );
 
       dispatch({ type: BOOK_LIST_SUCCESS, payload: data });
@@ -49,7 +49,7 @@ export const listBookDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: BOOK_DETAILS_REQUEST });
 
-    const { data } = await axios.get(`/api/books/${id}`);
+    const { data } = await axios.get(`https://bookies-1.onrender.com/api/books/${id}`);
 
     dispatch({ type: BOOK_DETAILS_SUCCESS, payload: data });
   } catch (error) {
@@ -75,7 +75,7 @@ export const deleteBook = (id) => async (dispatch, getState) => {
 
     const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
 
-    await axios.delete(`/api/books/${id}`, config);
+    await axios.delete(`https://bookies-1.onrender.com/api/books/${id}`, config);
 
     dispatch({ type: BOOK_DELETE_SUCCESS });
   } catch (error) {
@@ -101,7 +101,7 @@ export const createBook = () => async (dispatch, getState) => {
 
     const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
 
-    const { data } = await axios.post(`/api/books`, {}, config);
+    const { data } = await axios.post(`https://bookies-1.onrender.com/api/books`, {}, config);
 
     dispatch({ type: BOOK_CREATE_SUCCESS, payload: data });
   } catch (error) {
@@ -132,7 +132,7 @@ export const updateBook = (book) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.put(`/api/books/${book._id}`, book, config);
+    const { data } = await axios.put(`https://bookies-1.onrender.com/api/books/${book._id}`, book, config);
 
     dispatch({ type: BOOK_UPDATE_SUCCESS, payload: data });
   } catch (error) {
@@ -164,7 +164,7 @@ export const createBookReview =
         },
       };
 
-      await axios.post(`/api/books/${bookId}/reviews`, review, config);
+      await axios.post(`https://bookies-1.onrender.com/api/books/${bookId}/reviews`, review, config);
 
       dispatch({ type: BOOK_CREATE_REVIEW_SUCCESS });
     } catch (error) {
@@ -183,7 +183,7 @@ export const listTopBooks = () => async (dispatch) => {
     dispatch({ type: BOOK_TOP_REQUEST });
 
     const { data } = await axios.get(
-      `/api/books/top`
+      `https://bookies-1.onrender.com/api/books/top`
     );
 
     dispatch({ type: BOOK_TOP_SUCCESS, payload: data });
